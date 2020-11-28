@@ -1,8 +1,6 @@
-const morgan = require("morgan")
 const express = require("express")
 const app = express()
 
-app.use(morgan("tiny"))
 
 app.get("/", (req, res) => {
   res.send("Route route")
