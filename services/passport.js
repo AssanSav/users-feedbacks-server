@@ -16,30 +16,30 @@ passport.deserializeUser((id, done) => {
   })
 })
 
-passport.use(
-  new FacebookStrategy({
-    clientID: keys.facebookClientID,
-    clientSecret: keys.facebookClientSecret,
-    callbackURL: keys.facebookCallbackURL
-  },
-    (accessToken, refreshToken, profile, done) => {
-      console.log(profile)
-      User.findOne({ facebookId: profile.id }).then((existingUser) => {
-        if (existingUser) {
-          done(null, existingUser)
-        } else {
-          new User({ facebookId: profile.id })
-            .save()
-            .then((user) => {
-              done(null, user)
-            })
-        }
-      }).catch((err) => {
-        console.log(err)
-      })
-    }
-  )
-)
+// passport.use(
+//   new FacebookStrategy({
+//     clientID: keys.facebookClientID,
+//     clientSecret: keys.facebookClientSecret,
+//     callbackURL: keys.facebookCallbackURL
+//   },
+//     (accessToken, refreshToken, profile, done) => {
+//       console.log(profile)
+//       User.findOne({ facebookId: profile.id }).then((existingUser) => {
+//         if (existingUser) {
+//           done(null, existingUser)
+//         } else {
+//           new User({ facebookId: profile.id })
+//             .save()
+//             .then((user) => {
+//               done(null, user)
+//             })
+//         }
+//       }).catch((err) => {
+//         console.log(err)
+//       })
+//     }
+//   )
+// )
 
 passport.use(
   new GoogleStrategy({
