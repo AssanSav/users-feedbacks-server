@@ -11,11 +11,4 @@ module.exports = {
   cookieKey: "asgsdhlkfjkgjlc!!!gdkfjdut8690765m,cx vf/lkgfijlmvs,nv,xmcvn.jvslkv"
 }
 
-// COOKIE_KEY assaerstdyucnfjgokhijndhysgatwqzxvbdh123546etry758osdov0cpvxlkxudcnvcj
-
-// GOOGLE_CLIENT_ID 515581919119 - 7nhvos0elde3vvfim0qppbiig3t41c17.apps.googleusercontent.com
-
-// GOOGLE_CLIENT_SECRET NmUY6F7HwL4dqOoMAYnKOxUC
-
-// MONGO_URI mongodb + srv://emaily:Gourcy78050672,@cluster0.liimu.mongodb.net/emaily?retryWrites=true&w=majority
 
