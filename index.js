@@ -21,7 +21,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // app.use(morgan("tiny"))
-require("./routes/facebookAuth")(app)
+// require("./routes/facebookAuth")(app)
 require("./routes/googleAuth")(app)
 
 const PORT = process.env.PORT || 5000
