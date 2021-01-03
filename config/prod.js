@@ -8,5 +8,4 @@ module.exports = {
   stripeSecretKey: process.env.STRIPE_SECRET_KEY,
   baseURL: "https://users-feedback-app.herokuapp.com"
 };
-// console.log("URL:", process.env.MONGO_URL)
-console.log("URI:", process.env.MONGO_URI)
+

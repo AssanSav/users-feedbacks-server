@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors")
-// const morgan = require("morgan")
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
@@ -29,10 +28,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(morgan("tiny"))
 // require("./routes/facebookAuth")(app)
 require("./routes/googleAuth")(app);
 require("./routes/billings")(app);
-console.log("URI:", process.env.MONGO_URI)
+
 const port = process.env.PORT || 5000;
 app.listen(port);

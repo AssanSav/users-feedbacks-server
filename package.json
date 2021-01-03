@@ -8,7 +8,7 @@
     "npm": "6.14.8"
   },
   "scripts": {
-    "start": "MONGO_URI=mongodb+srv://Assane:Gourcy78050672,@feedbacks.qkfd3.mongodb.net/Assane?retryWrites=true&w=majority node index.js",
+    "start": "node index.js",
     "server": "nodemon index.js"
   },
   "keywords": [],
