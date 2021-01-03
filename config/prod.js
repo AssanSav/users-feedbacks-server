@@ -1,5 +1,5 @@
 module.exports = {
-  mongoURI: process.env.MONGO_URL,
+  mongoURI: process.env.MONGO_URI,
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
   googleClientID: process.env.GOOGLE_CLIENT_ID,
   googleCallbackURL: "/auth/google/callback",
@@ -8,3 +8,5 @@ module.exports = {
   stripeSecretKey: process.env.STRIPE_SECRET_KEY,
   baseURL: "https://users-feedback-app.herokuapp.com"
 };
+// console.log("URL:", process.env.MONGO_URL)
+console.log("URI:", process.env.MONGO_URI)
