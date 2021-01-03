@@ -27,7 +27,5 @@
     "passport-google-oauth20": "^2.0.0",
     "stripe": "^8.129.0"
   },
-  "devDependencies": {
-    "morgan": "^1.10.0"
-  }
+  "devDependencies": {}
 }
