@@ -33,6 +33,6 @@ app.use(passport.session());
 // require("./routes/facebookAuth")(app)
 require("./routes/googleAuth")(app);
 require("./routes/billings")(app);
-
+console.log("URI:", process.env.MONGO_URI)
 const port = process.env.PORT || 5000;
 app.listen(port);
