@@ -1,5 +1,6 @@
 const express = require("express");
-// const morgan = require("morgan")
+const cors = require("cors")
+const morgan = require("morgan")
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
@@ -15,6 +16,7 @@ mongoose.connect(keys.mongoURI, {
 
 const app = express();
 
+app.use(cors({credentials: true, origin: keys.baseURL}))
 app.use(express.json());
 
 app.use(
@@ -27,10 +29,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(morgan("tiny"))
+app.use(morgan("tiny"))
 // require("./routes/facebookAuth")(app)
 require("./routes/googleAuth")(app);
 require("./routes/billings")(app);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+const port = process.env.PORT || 5000;
+app.listen(port);
