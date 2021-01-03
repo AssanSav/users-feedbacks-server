@@ -15,7 +15,9 @@ mongoose.connect(keys.mongoURI, {
 
 const app = express();
 
-app.use(cors({credentials: true, origin: keys.baseURL}))
+app.use(cors(
+  // {credentials: true, origin: keys.baseURL}
+  ))
 app.use(express.json());
 
 app.use(
