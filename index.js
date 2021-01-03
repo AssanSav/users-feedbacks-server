@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors")
-const morgan = require("morgan")
+// const morgan = require("morgan")
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
@@ -29,7 +29,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(morgan("tiny"))
+// app.use(morgan("tiny"))
 // require("./routes/facebookAuth")(app)
 require("./routes/googleAuth")(app);
 require("./routes/billings")(app);
