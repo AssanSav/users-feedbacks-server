@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 
 app.use(
-  cors({ credentials: true, origin: keys.baseURL, cookie: { secure: true } })
+  cors({ credentials: true, origin: keys.baseURL })
 );
 
 app.enable('trust proxy')
