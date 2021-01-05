@@ -20,11 +20,14 @@
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "joi-browser": "^13.4.0",
+    "joi-objectid": "^3.0.1",
     "mongoose": "^5.10.18",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
+    "sendgrid": "^5.2.3",
     "stripe": "^8.129.0"
   },
   "devDependencies": {}
