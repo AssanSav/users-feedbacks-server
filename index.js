@@ -39,7 +39,7 @@ app.use(
     cookie: {
         path: "/",
         secure: true,
-        // domain: ".firebaseapp.com",
+        domain: keys.baseURL,
         httpOnly: true
     }
   })
