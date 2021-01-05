@@ -18,19 +18,21 @@ const app = express();
 
 app.use(express.json());
 app.set("trust proxy", 1);
-app.use(
-  cors({
-    credentials: true,
-    origin: keys.baseURL,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors({ credentials: true, origin: keys.baseURL }));
 
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey],
+    secret: keys.cookieKey,
+    saveUninitialized: false,
+    resave: false,
+    unset: "destroy",
+    cookie: {
+      sameSite: "Lax",
+      maxAge: 60000,
+      secure: true,
+    },
   })
 );
 
