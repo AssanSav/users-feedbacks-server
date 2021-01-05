@@ -29,7 +29,7 @@ app.use(cors({ credentials: true, origin: keys.baseURL }));
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+console.log("Cookie:", process.env.COOKIE_KEY)
 // require("./routes/facebookAuth")(app)
 require("./routes/googleAuth")(app);
 require("./routes/billings")(app);
