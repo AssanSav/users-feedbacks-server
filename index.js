@@ -14,70 +14,18 @@ mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,
 });
 
-const origins = [
-  "http://localhost:3000",
-  "http://localhost:5000",
-  "https://users-feedback-app.herokuapp.com",
-  "http://users-feedback-app.herokuapp.com",
-];
-
 const app = express();
 
 app.use(express.json());
-app.set("trust proxy", 1);
-app.use(
-  cors({
-    credentials: true,
-    origin: origins,
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "X-Requested-With",
-      "X-Forwarded-Proto",
-      "Cookie",
-      "Set-Cookie",
-    ],
-    exposedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "X-Requested-With",
-      "X-Forwarded-Proto",
-      "Cookie",
-      "Set-Cookie",
-    ],
-  })
-);
 
-if (app.get('env') === 'production') {
-  app.set('trust proxy', 1) // trust first proxy
-  // sess.cookie.secure = true // serve secure cookies
-}
+app.use(
+  cors({ credentials: true, origin: keys.baseURL, cookie: { secure: true } })
+);
 
 app.use(
   cookieSession({
-    secret: process.env.COOKIE_SECRET,
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    },
-    // cookie: {
-    //   // maxAge: 30 * 24 * 60 * 60 * 1000,
-    //   httpOnly: true,
-    //   secure: true,
-    //   sameSite: "none",
-    // },
-    // genid: () => uuidv1(),
+    maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey],
-    // sameSite: "none",
-    // proxy: true,
-    // // httpOnly: true,
-    // // secret: "ASJJDmndsflrfmvcmvcvlclv",
-    // resave: true,
-    // unset: "destroy",
-    // saveUninitialized: false,
   })
 );
 
