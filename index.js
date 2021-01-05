@@ -48,6 +48,11 @@ app.use(
   })
 );
 
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  // sess.cookie.secure = true // serve secure cookies
+}
+
 app.use(
   cookieSession({
     secret: process.env.COOKIE_SECRET,
@@ -66,7 +71,7 @@ app.use(
     // },
     // genid: () => uuidv1(),
     keys: [keys.cookieKey],
-    sameSite: "none",
+    // sameSite: "none",
     // proxy: true,
     // // httpOnly: true,
     // // secret: "ASJJDmndsflrfmvcmvcvlclv",
