@@ -6,6 +6,7 @@ const passport = require("passport");
 const keys = require("./config/keys");
 
 require("./models/user");
+require("./models/Survey")
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI, {
@@ -32,6 +33,7 @@ app.use(passport.session());
 // require("./routes/facebookAuth")(app)
 require("./routes/googleAuth")(app);
 require("./routes/billings")(app);
+require("./routes/surveys")(app)
 
 const port = process.env.PORT || 5000;
 app.listen(port);
