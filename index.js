@@ -56,7 +56,7 @@ app.use(
     cookie: {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "none",
     },
     // cookie: {
     //   // maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -66,6 +66,7 @@ app.use(
     // },
     // genid: () => uuidv1(),
     keys: [keys.cookieKey],
+    sameSite: "none",
     // proxy: true,
     // // httpOnly: true,
     // // secret: "ASJJDmndsflrfmvcmvcvlclv",
