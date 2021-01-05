@@ -1,11 +1,11 @@
 const passport = require("passport");
 const keys = require("../config/keys");
 
-module.exports = (app) => {
+module.exports = function (app) {
   app.get(
     "/auth/google",
     passport.authenticate("google", {
-      scope: ["openid", "email", "profile"],
+      scope: ["profile", "email"],
     })
   );
 
@@ -18,12 +18,6 @@ module.exports = (app) => {
   );
 
   app.get("/api/current_user", (req, res) => {
-    console.log(req.headers.cookie);
-    res.cookie("auth", req.headers.cookie, {
-      domain: keys.baseURL,
-      maxAge: 900000,
-      httpOnly: true,
-    });
     res.send(req.user);
   });
 
