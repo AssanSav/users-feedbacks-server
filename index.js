@@ -14,25 +14,30 @@ mongoose.connect(keys.mongoURI, {
   useUnifiedTopology: true,
 });
 
+const origins = [
+  "http://localhost:3000",
+  "http://localhost:5000",
+  "https://users-feedback-app.herokuapp.com",
+  "http://users-feedback-app.herokuapp.com",
+];
+
 const app = express();
 
 app.use(express.json());
 app.set("trust proxy", 1);
-app.use(cors({ credentials: true, origin: keys.baseURL }));
+app.use(cors({ credentials: true, origin: origins }));
 
 app.use(
   cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey],
-    secret: keys.cookieKey,
-    saveUninitialized: false,
-    resave: false,
-    unset: "destroy",
     cookie: {
-      sameSite: "Lax",
-      maxAge: 60000,
-      secure: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
     },
+    keys: [keys.cookieKey],
+    proxy: true,
+    httpOnly: true,
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
   })
 );
 
