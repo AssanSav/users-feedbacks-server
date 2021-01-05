@@ -51,19 +51,19 @@ app.use(
 app.use(
   cookieSession({
     cookie: {
-      maxAge: 30 * 24 * 60 * 60 * 1000,
+      // maxAge: 30 * 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      secure: true,
       sameSite: "none",
     },
     genid: () => uuidv1(),
     keys: [keys.cookieKey],
     proxy: true,
-    httpOnly: true,
-    secret: "ASJJDmndsflrfmvcmvcvlclv",
+    // httpOnly: true,
+    // secret: "ASJJDmndsflrfmvcmvcvlclv",
     resave: true,
-    rolling: true,
     unset: "destroy",
     saveUninitialized: false,
-    saveUninitialized: true,
   })
 );
 
