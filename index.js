@@ -22,14 +22,15 @@ app.use(
   cors({ credentials: true, origin: keys.baseURL, cookie: { secure: true } })
 );
 
+app.enable('trust proxy')
 app.use(
   cookieSession({
     cookie: {
       secure: true, // it works without the secure flag (cookie is set)
       proxy: true, // tried using this as well, no difference
-      // maxAge: 5184000000 // 2 months
+      maxAge: 5184000000, // 2 months
+      // maxAge: 30 * 24 * 60 * 60 * 1000,
     },
-    maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey],
   })
 );
