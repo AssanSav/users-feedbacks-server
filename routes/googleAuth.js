@@ -13,6 +13,12 @@ module.exports = function (app) {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
+      console.log("Cookie:", req.headers.cookie)
+      res.cookie("auth", req.headers.cookie, {
+        domain: keys.baseURL,
+        httpOnly: false,
+        maxAge: 30 * 24 * 60 * 60 * 1000
+      })
       res.redirect(`${keys.baseURL}/surveys`);
     }
   );
