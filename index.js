@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
-var cookieParser = require("cookie-parser");
 const passport = require("passport");
 const keys = require("./config/keys");
 
@@ -17,34 +16,23 @@ mongoose.connect(keys.mongoURI, {
 
 const app = express();
 
-app.all('*', function(req, res, next) {
-
-  res.setHeader("Access-Control-Allow-Origin", keys.baseURL);
-  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
-
 app.use(express.json());
 app.set("trust proxy", 1);
-app.use(cors({ credentials: true, origin: keys.baseURL }));
-app.use(cookieParser());
+app.use(
+  cors({
+    credentials: true,
+    origin: keys.baseURL,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey],
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        path: "/",
-        secure: true,
-        domain: keys.baseURL,
-        httpOnly: true
-    }
   })
 );
-
 
 app.use(passport.initialize());
 app.use(passport.session());
