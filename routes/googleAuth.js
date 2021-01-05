@@ -18,7 +18,6 @@ module.exports = (app) => {
   );
 
   app.get("/api/current_user", (req, res) => {
-    console.log(req.headers.cookie)
     res.send(req.user);
   });
 
