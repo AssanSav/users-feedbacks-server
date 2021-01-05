@@ -25,18 +25,44 @@ const app = express();
 
 app.use(express.json());
 app.set("trust proxy", 1);
-app.use(cors({ credentials: true, origin: origins }));
+app.use(
+  cors({
+    credentials: true,
+    origin: origins,
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "X-Requested-With",
+      "X-Forwarded-Proto",
+      "Cookie",
+      "Set-Cookie",
+    ],
+    exposedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "X-Requested-With",
+      "X-Forwarded-Proto",
+      "Cookie",
+      "Set-Cookie",
+    ],
+  })
+);
 
 app.use(
   cookieSession({
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000,
     },
+    genid: () => uuidv1(),
     keys: [keys.cookieKey],
     proxy: true,
     httpOnly: true,
-    secret: "keyboard cat",
-    resave: false,
+    secret: keys.cookieKey,
+    resave: true,
+    rolling: true,
+    unset: "destroy",
+    saveUninitialized: false,
+    sameSite: false,
     saveUninitialized: true,
   })
 );
