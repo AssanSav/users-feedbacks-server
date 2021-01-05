@@ -24,6 +24,11 @@ app.use(
 
 app.use(
   cookieSession({
+    cookie: {
+      secure: true, // it works without the secure flag (cookie is set)
+      proxy: true, // tried using this as well, no difference
+      // maxAge: 5184000000 // 2 months
+    },
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey],
   })
